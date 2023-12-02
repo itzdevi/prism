@@ -1,0 +1,132 @@
+[
+{
+  "directory": "/home/dev/Desktop/prism/build",
+  "command": "/usr/bin/gcc  -I/home/dev/Desktop/prism/include -I/home/dev/Desktop/prism/src -I/home/dev/Desktop/prism/GLFW/include -g -o CMakeFiles/prism.dir/src/glad.c.o -c /home/dev/Desktop/prism/src/glad.c",
+  "file": "/home/dev/Desktop/prism/src/glad.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build",
+  "command": "/usr/bin/gcc  -I/home/dev/Desktop/prism/include -I/home/dev/Desktop/prism/src -I/home/dev/Desktop/prism/GLFW/include -g -o CMakeFiles/prism.dir/src/main.c.o -c /home/dev/Desktop/prism/src/main.c",
+  "file": "/home/dev/Desktop/prism/src/main.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build",
+  "command": "/usr/bin/gcc  -I/home/dev/Desktop/prism/include -I/home/dev/Desktop/prism/src -I/home/dev/Desktop/prism/GLFW/include -g -o CMakeFiles/prism.dir/src/shader.c.o -c /home/dev/Desktop/prism/src/shader.c",
+  "file": "/home/dev/Desktop/prism/src/shader.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o -c /home/dev/Desktop/prism/GLFW/src/context.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/context.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/init.c.o -c /home/dev/Desktop/prism/GLFW/src/init.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/init.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/input.c.o -c /home/dev/Desktop/prism/GLFW/src/input.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/input.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/monitor.c.o -c /home/dev/Desktop/prism/GLFW/src/monitor.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/monitor.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/platform.c.o -c /home/dev/Desktop/prism/GLFW/src/platform.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/platform.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/vulkan.c.o -c /home/dev/Desktop/prism/GLFW/src/vulkan.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/vulkan.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/window.c.o -c /home/dev/Desktop/prism/GLFW/src/window.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/window.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/egl_context.c.o -c /home/dev/Desktop/prism/GLFW/src/egl_context.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/egl_context.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/osmesa_context.c.o -c /home/dev/Desktop/prism/GLFW/src/osmesa_context.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/osmesa_context.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/null_init.c.o -c /home/dev/Desktop/prism/GLFW/src/null_init.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/null_init.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/null_monitor.c.o -c /home/dev/Desktop/prism/GLFW/src/null_monitor.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/null_monitor.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/null_window.c.o -c /home/dev/Desktop/prism/GLFW/src/null_window.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/null_window.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/null_joystick.c.o -c /home/dev/Desktop/prism/GLFW/src/null_joystick.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/null_joystick.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/posix_module.c.o -c /home/dev/Desktop/prism/GLFW/src/posix_module.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/posix_module.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/posix_time.c.o -c /home/dev/Desktop/prism/GLFW/src/posix_time.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/posix_time.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/posix_thread.c.o -c /home/dev/Desktop/prism/GLFW/src/posix_thread.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/posix_thread.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/x11_init.c.o -c /home/dev/Desktop/prism/GLFW/src/x11_init.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/x11_init.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/x11_monitor.c.o -c /home/dev/Desktop/prism/GLFW/src/x11_monitor.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/x11_monitor.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/x11_window.c.o -c /home/dev/Desktop/prism/GLFW/src/x11_window.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/x11_window.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/xkb_unicode.c.o -c /home/dev/Desktop/prism/GLFW/src/xkb_unicode.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/xkb_unicode.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/glx_context.c.o -c /home/dev/Desktop/prism/GLFW/src/glx_context.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/glx_context.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/linux_joystick.c.o -c /home/dev/Desktop/prism/GLFW/src/linux_joystick.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/linux_joystick.c"
+},
+{
+  "directory": "/home/dev/Desktop/prism/build/GLFW/src",
+  "command": "/usr/bin/gcc -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/dev/Desktop/prism/GLFW/include -I/home/dev/Desktop/prism/GLFW/src -I/home/dev/Desktop/prism/build/GLFW/src -g -fPIC -Wall -std=c99 -o CMakeFiles/glfw.dir/posix_poll.c.o -c /home/dev/Desktop/prism/GLFW/src/posix_poll.c",
+  "file": "/home/dev/Desktop/prism/GLFW/src/posix_poll.c"
+}
+]

@@ -13,5 +13,5 @@ file(GLOB SRC
 	"src/*.h"
 )
     
-add_executable(engine ${SRC})
+add_executable(prism ${SRC})
 target_link_libraries(prism glfw)

@@ -19,7 +19,6 @@ int main(void) {
 
 	glViewport(0, 0, 800, 600);
 
-
 	float vertices[] = {
 		-0.5, -0.5, 0.0,
 		-0.5,  0.5, 0.0,
@@ -31,7 +30,7 @@ int main(void) {
 		2, 1, 3
 	};
 	
-	shaderInit("./test.txt", "");
+	Shader shader = shaderInit("../shaders/unlit.vert", "../shaders/unlit.frag");
 
 	unsigned int vao;
 	glGenVertexArrays(1, &vao);
@@ -50,12 +49,12 @@ int main(void) {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 	while (!glfwWindowShouldClose(window)) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClearColor(0/255.0, 128/255.0, 128/255.0, 1.0);
 
+		shaderAddFloat(shader, "time", glfwGetTime());
+		shaderUse(shader);
 		glBindVertexArray(vao);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
