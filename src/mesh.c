@@ -2,13 +2,15 @@
 #include <stdio.h>
 #include "mesh.h"
 
-Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], int indicesSize) {
+Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], int indicesSize, float normals[], int normalsSize) {
     unsigned int vao;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
     unsigned int vbo;
     vbo = GenerateArrayBuffer(0, 3, GL_FLOAT, sizeof(float) * 3, vertices, verticesSize, GL_STATIC_DRAW);
+
+    GenerateArrayBuffer(1, 3, GL_FLOAT, sizeof(float) * 3, normals, normalsSize, GL_STATIC_DRAW);
 
     unsigned int ebo;
     glGenBuffers(1, &ebo);
@@ -20,8 +22,8 @@ Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], 
 }
 
 void MeshDraw(Mesh mesh) {
-    ShaderUse(mesh.shader);
     glBindVertexArray(mesh.vao);
+    ShaderUse(mesh.shader);
     glDrawElements(GL_TRIANGLES, mesh.indicesSize, GL_UNSIGNED_INT, 0);
 }
 

@@ -27,7 +27,7 @@ int main(void) {
 
 	glViewport(0, 0, 800, 600);
 
-	float vertices[] = {
+	float cubeVertices[] = {
 		// FRONT
 		-1, -1,  1,
 		-1,  1,  1,
@@ -40,7 +40,7 @@ int main(void) {
 		-1, -1, -1,
 		-1,  1, -1,
 	};
-	int indices[] = {
+	int cubeIndices[] = {
 		// FRONT
 		0, 1, 2,
 		2, 1, 3,
@@ -60,12 +60,70 @@ int main(void) {
 		6, 0, 4,
 		4, 0, 2
 	};
+	float cubeNormals[] = {
+		// FRONT
+		 0,  0,  1,
+		 0,  0,  1,
+		 0,  0,  1,
+		 0,  0,  1,
+		// RIGHT
+		 1,  0,  0,
+		 1,  0,  0,
+		 1,  0,  0,
+		 1,  0,  0,
+		// BACK
+		 0,  0, -1,
+		 0,  0, -1,
+		 0,  0, -1,
+		 0,  0, -1,
+		// LEFT
+		-1,  0,  0,
+		-1,  0,  0,
+		-1,  0,  0,
+		-1,  0,  0,
+		// TOP
+		 0,  1,  0,
+		 0,  1,  0,
+		 0,  1,  0,
+		 0,  1,  0,
+		// BOTTOM
+		 0, -1,  0,
+		 0, -1,  0,
+		 0, -1,  0,
+		 0, -1,  0,
+	};
 	
-	Shader shader = ShaderInit("../shaders/unlit.vert", "../shaders/unlit.frag");
-	Mesh mesh = MeshInit(shader, vertices, sizeof(vertices), indices, sizeof(indices));
+	float planeVertices[] = {
+		 1, 0, -1,
+		 1, 0,  1,
+		-1, 0, -1,
+		-1, 0,  1
+	};
+	int planeIndices[] = {
+		0, 1, 2,
+		2, 1, 3
+	};
+	float planeNormals[] = {
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0,
+		0, 1, 0
+	};
+
+	Shader lit = ShaderInit("../shaders/lit.vs", "../shaders/lit.fs");
+	Shader unlit = ShaderInit("../shaders/unlit.vs", "../shaders/unlit.fs");
+	Mesh cube = MeshInit(lit, cubeVertices, sizeof(cubeVertices), cubeIndices, sizeof(cubeIndices), cubeNormals, sizeof(cubeNormals));
+	Mesh light = MeshInit(unlit, cubeVertices, sizeof(cubeVertices), cubeIndices, sizeof(cubeIndices), cubeNormals, sizeof(cubeNormals));
 
 	mat4 model;
 	glm_mat4_identity(model);
+	glm_scale(model, (vec3){ 0.4, 0.2, 0.4 });
+
+	vec3 lightPos = { 0, 1, 1 };
+	mat4 lightModel;
+	glm_mat4_identity(lightModel);
+	glm_translate(lightModel, lightPos);
+	glm_scale(lightModel, (vec3){ 0.2, 0.2, 0.2 });
 
 	mat4 view;
 	glm_mat4_identity(view);
@@ -74,7 +132,9 @@ int main(void) {
 	mat4 projection;
 	glm_perspective(glm_rad(45), 800.0/600.0, 0.1, 100.0, projection);
 
-	vec3 cameraPos = { 0,  0, 3 };
+	vec3 cameraPos = { 0,  2, 3 };
+	vec3 cameraUp = { 0, 1, 0 };
+	vec3 cameraRight = { 1, 0, 0 };
 	float pitch = 0, yaw = -90;
 	double dt = 0;
 	double lastTime = 0;
@@ -84,6 +144,7 @@ int main(void) {
 	double lastMouseX = 0, lastMouseY = 0;
 	double mouseXDelta = 0;
 	double mouseYDelta = 0;
+
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
 
@@ -91,6 +152,9 @@ int main(void) {
 		direction[0] = cos(glm_rad(yaw)) * cos(glm_rad(pitch));
 		direction[1] = sin(glm_rad(pitch));
 		direction[2] = sin(glm_rad(yaw)) * cos(glm_rad(pitch));
+
+		glm_cross(direction, cameraUp, cameraRight);
+		glm_normalize(cameraRight);
 
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 			vec3 speed;
@@ -104,10 +168,7 @@ int main(void) {
 		}
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
 			vec3 speed;
-			vec3 right;
-			glm_cross(direction, (vec3){ 0, 1, 0}, right);
-			glm_normalize(right);
-			glm_vec3_mul(right, (vec3){ dt * 2, dt * 2, dt * 2 }, speed);
+			glm_vec3_mul(cameraRight, (vec3){ dt * 2, dt * 2, dt * 2 }, speed);
 			glm_vec3_sub(cameraPos, speed, cameraPos);
 		}
 		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
@@ -115,10 +176,10 @@ int main(void) {
 			vec3 right;
 			glm_cross(direction, (vec3){ 0, 1, 0}, right);
 			glm_normalize(right);
-			glm_vec3_mul(right, (vec3){ dt * MOVE_SPEED, dt * 2, dt * 2 }, speed);
+			glm_vec3_mul(cameraRight, (vec3){ dt * MOVE_SPEED, dt * 2, dt * 2 }, speed);
 			glm_vec3_add(cameraPos, speed, cameraPos);
 		}
-		
+
 		yaw += mouseXDelta * dt * SENSITIVITY;
 		pitch -= mouseYDelta * dt * SENSITIVITY;
 
@@ -130,25 +191,21 @@ int main(void) {
 		glm_lookat(cameraPos, forward, (vec3){ 0, 1, 0 }, view);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(0/255.0, 128/255.0, 128/255.0, 1.0);
+		glClearColor(0.0, 0.0, 0.0, 1.0);
 
-		ShaderAddFloat(shader, "u_time", glfwGetTime());
-		ShaderAddMat4(shader, "u_view", view);
-		ShaderAddMat4(shader, "u_projection", projection);
+		MeshDraw(cube);
+		ShaderAddMat4(lit, "u_model", model);
+		ShaderAddMat4(lit, "u_projection", projection);
+		ShaderAddMat4(lit, "u_view", view);
+		ShaderAddVec3(lit, "u_albedo", (vec3){ 0.3, 0.6, 1.0 });
+		ShaderAddVec3(lit, "u_lightColor", (vec3){ 1.0, 1.0, 1.0 });
+		ShaderAddVec3(lit, "u_lightPosition", lightPos);
 
-		glm_mat4_identity(model);
-		glm_translate(model, (vec3){ -0.7, 0, 0 });
-		glm_scale(model, (vec3){ 0.5, 0.5, 0.5 });
-		ShaderAddVec3(shader, "u_tint", (vec3){ 255/255.0, 206/255.0, 11/255.0 });
-		ShaderAddMat4(shader, "u_model", model);
-		MeshDraw(mesh);
-
-		glm_mat4_identity(model);
-		glm_translate(model, (vec3){ 0.7, 0, 0 });
-		glm_scale(model, (vec3){ 0.5, 0.5, 0.5 });
-		ShaderAddVec3(shader, "u_tint", (vec3){ 171/255.0, 62/255.0, 143/255.0 });
-		ShaderAddMat4(shader, "u_model", model);
-		MeshDraw(mesh);
+		MeshDraw(light);
+		ShaderAddVec3(unlit, "u_tint", (vec3){ 1.0, 1.0, 1.0 });
+		ShaderAddMat4(unlit, "u_model", lightModel);
+		ShaderAddMat4(unlit, "u_view", view);
+		ShaderAddMat4(unlit, "u_projection", projection);
 
 		glfwSwapBuffers(window);
 

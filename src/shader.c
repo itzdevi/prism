@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 Shader ShaderInit(const char* vertPath, const char* fragPath) {
-    char* vertSource = (char*)calloc(512, sizeof(char));
-    char* fragSource = (char*)calloc(512, sizeof(char));
+    char* vertSource = (char*)calloc(2048, sizeof(char));
+    char* fragSource = (char*)calloc(2048, sizeof(char));
 
     OpenFile(vertPath, vertSource);
     OpenFile(fragPath, fragSource);

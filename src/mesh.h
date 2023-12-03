@@ -10,6 +10,6 @@ typedef struct Mesh {
     Shader shader;
 } Mesh;
 
-Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], int indicesSize);
+Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], int indicesSize, float normals[], int normalsSize);
 void MeshDraw(Mesh mesh);
 unsigned int GenerateArrayBuffer(unsigned int index, int size, unsigned int type, int stride, void* buffer, int bufferSize, unsigned int usage);
