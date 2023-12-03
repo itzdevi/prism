@@ -1,7 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
 #include <stdio.h>
-#include <shader.h>
+#include "mesh.h"
 
 int main(void) {
 	GLFWwindow* window;
@@ -17,48 +18,73 @@ int main(void) {
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) return 1;
 
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
+
 	glViewport(0, 0, 800, 600);
 
 	float vertices[] = {
-		-0.5, -0.5, 0.0,
-		-0.5,  0.5, 0.0,
-		 0.5, -0.5, 0.0,
-		 0.5,  0.5, 0.0
+		// FRONT
+		-1, -1,  1,
+		-1,  1,  1,
+		 1, -1,  1,
+		 1,  1,  1,
+		// RIGHT
+		 1, -1, -1,
+		 1,  1, -1,
+		// BACK
+		-1, -1, -1,
+		-1,  1, -1,
 	};
 	int indices[] = {
+		// FRONT
 		0, 1, 2,
-		2, 1, 3
+		2, 1, 3,
+		// RIGHT
+		2, 3, 4,
+		4, 3, 5,
+		// BACK
+		4, 5, 6,
+		6, 5, 7,
+		// LEFT
+		6, 7, 0,
+		0, 7, 1,
+		// TOP
+		1, 7, 3,
+		3, 7, 5,
+		// BOTTOM
+		6, 0, 4,
+		4, 0, 2
 	};
 	
-	Shader shader = shaderInit("../shaders/unlit.vert", "../shaders/unlit.frag");
+	Shader shader = ShaderInit("../shaders/unlit.vert", "../shaders/unlit.frag");
+	Mesh mesh = MeshInit(shader, vertices, sizeof(vertices), indices, sizeof(indices));
 
-	unsigned int vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	mat4 model;
+	glm_mat4_identity(model);
+	glm_scale(model, (vec3){0.5, 0.5, 0.5});
 
-	unsigned int vbo;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	mat4 view;
+	glm_mat4_identity(view);
+	glm_translate(view, (vec3){0, 0, -3});
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	unsigned int ebo;
-	glGenBuffers(1, &ebo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	mat4 projection;
+	glm_perspective(glm_rad(45), 800.0/600.0, 0.1, 100.0, projection);
 
 	while (!glfwWindowShouldClose(window)) {
+		glfwPollEvents();
+
+		glm_rotate(model, glm_rad(1), (vec3){1, 0, 0});
+
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClearColor(0/255.0, 128/255.0, 128/255.0, 1.0);
 
-		shaderAddFloat(shader, "time", glfwGetTime());
-		shaderUse(shader);
-		glBindVertexArray(vao);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		ShaderAddColor(shader, "u_tint", 1.0, 1.0, 1.0);
+		ShaderAddMat4(shader, "u_model", model);
+		ShaderAddMat4(shader, "u_view", view);
+		ShaderAddMat4(shader, "u_projection", projection);
+		MeshDraw(mesh);
 
-		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
 	glfwTerminate();

@@ -4,12 +4,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-Shader shaderInit(const char* vertPath, const char* fragPath) {
+Shader ShaderInit(const char* vertPath, const char* fragPath) {
     char* vertSource = (char*)calloc(512, sizeof(char));
     char* fragSource = (char*)calloc(512, sizeof(char));
 
-    openFile(vertPath, vertSource);
-    openFile(fragPath, fragSource);
+    OpenFile(vertPath, vertSource);
+    OpenFile(fragPath, fragSource);
 
     unsigned int vertShader;
     unsigned int fragShader;
@@ -18,7 +18,7 @@ Shader shaderInit(const char* vertPath, const char* fragPath) {
     {
         vertShader = glCreateShader(GL_VERTEX_SHADER);
 
-        glShaderSource(vertShader, 1, &vertSource, NULL);
+        glShaderSource(vertShader, 1, (const char**)&vertSource, NULL);
         glCompileShader(vertShader);
 
         int success = 0;
@@ -33,7 +33,7 @@ Shader shaderInit(const char* vertPath, const char* fragPath) {
     {
         fragShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-        glShaderSource(fragShader, 1, &fragSource, NULL);
+        glShaderSource(fragShader, 1, (const char**)&fragSource, NULL);
         glCompileShader(fragShader);
 
         int success = 0;
@@ -71,15 +71,23 @@ Shader shaderInit(const char* vertPath, const char* fragPath) {
     return shader;
 }
 
-void shaderUse(Shader shader) {
+void ShaderUse(Shader shader) {
     glUseProgram(shader.program);
 }
 
-void shaderAddFloat(Shader shader, const char* name, float value) {
+void ShaderAddFloat(Shader shader, const char* name, float value) {
     glUniform1f(glGetUniformLocation(shader.program, name), value);
 }
 
-void openFile(const char* path, char* buf) {
+void ShaderAddColor(Shader shader, const char* name, float r, float g, float b) {
+    glUniform3f(glGetUniformLocation(shader.program, name), r, g, b);
+}
+
+void ShaderAddMat4(Shader shader, const char* name, mat4 matrix) {
+    glUniformMatrix4fv(glGetUniformLocation(shader.program, name), 1, GL_FALSE, matrix);
+}
+
+void OpenFile(const char* path, char* buf) {
     FILE *fp;
     fp = fopen(path, "r");
     char c;

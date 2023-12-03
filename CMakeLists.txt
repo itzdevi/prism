@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 project(prism LANGUAGES C)
 
 add_subdirectory(./GLFW)
+add_subdirectory(./cglm)
 
 include_directories(
     "include"
@@ -14,4 +15,4 @@ file(GLOB SRC
 )
     
 add_executable(prism ${SRC})
-target_link_libraries(prism glfw)
+target_link_libraries(prism glfw cglm)

@@ -34,5 +34,5 @@ unsigned int GenerateArrayBuffer(unsigned int index, int size, unsigned int type
     glVertexAttribPointer(index, size, type, GL_FALSE, stride, (void*)0);
     glEnableVertexAttribArray(index);
 
-    return (unsigned int)buffer;
+    return (unsigned int)buf;
 }
