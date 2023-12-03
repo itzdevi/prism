@@ -79,8 +79,8 @@ void ShaderAddFloat(Shader shader, const char* name, float value) {
     glUniform1f(glGetUniformLocation(shader.program, name), value);
 }
 
-void ShaderAddColor(Shader shader, const char* name, float r, float g, float b) {
-    glUniform3f(glGetUniformLocation(shader.program, name), r, g, b);
+void ShaderAddVec3(Shader shader, const char* name, vec3 vector) {
+    glUniform3fv(glGetUniformLocation(shader.program, name), 1, vector);
 }
 
 void ShaderAddMat4(Shader shader, const char* name, mat4 matrix) {
