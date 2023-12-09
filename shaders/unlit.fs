@@ -2,8 +2,10 @@
 out vec4 frag;
 
 uniform vec3 u_tint;
+uniform sampler2D u_texture;
 
-void main()
-{
-    frag = vec4(u_tint, 1.0f);
+in vec2 coords;
+
+void main() {
+    frag = texture(u_texture, coords);
 } 

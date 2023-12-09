@@ -3,8 +3,10 @@
 uniform vec3 u_albedo;
 uniform vec3 u_lightColor;
 uniform vec3 u_lightPosition;
+uniform sampler2D u_mainTex;
 
 in vec3 globalPos;
+in vec2 texCoord;
 in vec3 normal;
 
 void main() {
@@ -17,6 +19,6 @@ void main() {
     float diff = max(dot(N, L), 0.0);
     vec3 diffuse = diff * u_lightColor;
 
-    vec3 result = (ambient + diff) * u_albedo;
-    gl_FragColor = vec4(result, 1.0);
+    vec3 result = (ambient + diffuse) * u_albedo;
+    gl_FragColor = texture(u_mainTex, texCoord) + vec4(result, 1);
 }

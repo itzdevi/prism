@@ -1,15 +1,17 @@
 #pragma once
 
+#include <glm/glm.hpp>
 #include "shader.h"
 
-typedef struct Mesh {
-    unsigned int vao;
-    unsigned int vbo;
-    unsigned int ebo;
-    int indicesSize;
-    Shader shader;
-} Mesh;
+class Mesh {
+private:
+    unsigned int m_vao;
+    unsigned int m_vbo;
+    unsigned int m_ebo;
+    unsigned int m_indicesCount;
 
-Mesh MeshInit(Shader shader, float vertices[], int verticesSize, int indices[], int indicesSize, float normals[], int normalsSize);
-void MeshDraw(Mesh mesh);
-unsigned int GenerateArrayBuffer(unsigned int index, int size, unsigned int type, int stride, void* buffer, int bufferSize, unsigned int usage);
+    unsigned int GenerateArrayBuffer(unsigned int index, int size, unsigned int type, int stride, void* buffer, int bufferSize, unsigned int usage);
+public:
+    Mesh(float vertices[], int verticesSize, int indices[], int indicesSize, float texCoords[], int texCoordsSize, float normals[], int normalsSize);
+    void Draw(Shader shader);
+};

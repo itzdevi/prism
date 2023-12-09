@@ -1,14 +1,17 @@
 #pragma once
 
-#include <cglm/cglm.h>
+#include <string>
+#include <glm/glm.hpp>
 
-typedef struct Shader {
-    unsigned int program;
-} Shader;
+class Shader {
+private:
+    unsigned int m_program;
 
-Shader ShaderInit(const char* vertPath, const char* fragPath);
-void ShaderUse(Shader shader);
-void ShaderAddFloat(Shader shader, const char* name, float value);
-void ShaderAddVec3(Shader shader, const char* name, vec3 vector);
-void ShaderAddMat4(Shader shader, const char* name, mat4 matrix);
-void OpenFile(const char* path, char* buf);
+    std::string OpenFile(std::string path);
+public:
+    Shader(std::string vertPath, std::string fragPath);
+    void Use();
+    void AddFloat(std::string name, float data);
+    void AddVec3(std::string name, glm::vec3 data);
+    void AddMat4(std::string name, glm::mat4 data);
+};
