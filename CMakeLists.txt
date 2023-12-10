@@ -3,6 +3,7 @@ project(prism LANGUAGES C CXX)
 
 add_subdirectory(./GLFW)
 add_subdirectory(./glm)
+add_subdirectory(./assimp)
 
 include_directories(
 	"include"
