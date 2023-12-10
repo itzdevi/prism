@@ -8,7 +8,7 @@ include_directories(
 	"include"
 	"src"
 )
-    
+
 file(GLOB SRC
 	"src/*.c"
 	"src/*.cpp"

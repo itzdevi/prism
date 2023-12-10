@@ -11,7 +11,7 @@ in vec3 normal;
 
 void main() {
     float ambientStrength = 0.2;
-    vec3 ambient = ambientStrength * u_lightColor;
+    vec3 ambient = ambientStrength * u_lightColor * texture2D(u_mainTex, texCoord).xyz;
 
     vec3 N = normalize(normal);
     vec3 L = normalize(u_lightPosition - globalPos);
@@ -20,5 +20,5 @@ void main() {
     vec3 diffuse = diff * u_lightColor;
 
     vec3 result = (ambient + diffuse) * u_albedo;
-    gl_FragColor = texture(u_mainTex, texCoord) + vec4(result, 1);
+    gl_FragColor = vec4(result, 1);
 }
